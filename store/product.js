@@ -33,9 +33,15 @@ export const mutations = {
     },
     setImgSrc: (state, imgSrc) => {
         state.imgSrc = imgSrc
+    },
+    setProduct: (state, product) =>{
+        state.productName = product.name
     }
 }
 
 export const actions = {
-    
+    async getProduct ({ commit }) {
+        const product = await this.$axios.$get('/products')
+        commit('setProduct', product)
+      }
 }
