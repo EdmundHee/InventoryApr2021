@@ -1,5 +1,5 @@
 <template>
-  <div>This is {{product}} index.vue</div>
+  <div>This is {{productName}}</div>
 </template>
 
 <script>
@@ -9,7 +9,7 @@ export default {
     layout: "layout_a",
     computed:{
       ...mapState({
-        product: state => state.product.productName
+        productName: state => state.product.productName
       })
     },
     methods: {
