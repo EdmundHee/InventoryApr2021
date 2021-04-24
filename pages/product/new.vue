@@ -49,13 +49,14 @@
           @input="setImgSrc($event)" 
           class="my-2"
         />
+        <button type="button" class="bg-yellow-400 text-gray-700 py-2 px-4 hover:bg-yellow-500 hover:text-gray-800 transition-all ease-in-out duration-300" @click="createProduct">Create</button>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import { mapState, mapMutations } from 'vuex';
+import { mapState, mapMutations, mapActions } from 'vuex';
 export default {
     layout: "dashboard",
     data() {
@@ -80,6 +81,9 @@ export default {
         setSupplierName: 'product/setSupplierName',
         setQuantity: 'product/setQuantity',
         setImgSrc : 'product/setImgSrc'
+      }),
+      ...mapActions({
+        createProduct : "product/createProduct"
       })
     }
 }

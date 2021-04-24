@@ -1,24 +1,26 @@
 <template>
-  <div>This is {{productName}}</div>
+  <div>This is {{products}}</div>
 </template>
 
 <script>
 import { mapActions, mapState } from 'vuex'
 
 export default {
-    layout: "layout_a",
+    layout: "dashboard",
     computed:{
       ...mapState({
-        productName: state => state.product.productName
+        products: state => state.product.products,
+        token: state => state.auth.user.idToken,
+        uid: state => state.auth.user.uid,
       })
     },
     methods: {
       ...mapActions({
-        getProduct : "product/getProduct"
+        getProducts : "product/getProducts"
       })
     },
     mounted(){
-      this.getProduct();
+      this.getProducts({uid:this.uid, token:this.token});
     }
 }
 </script>

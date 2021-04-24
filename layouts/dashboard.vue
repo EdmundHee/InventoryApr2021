@@ -16,6 +16,18 @@
                             <i class="fas fa-seedling"></i>
                         </template>
                     </side-menu-item>
+                    <div class="cursor-pointer flex justify-between text-md text-warmGray-700 hover:bg-coolGray-100 py-4 px-3">
+                        <div class="flex">
+                            <span class="pl-2 pr-4">
+                                <!--  FontAwesome Icon for Side Menu Item -->
+                                <i class="fas fa-unlock"></i>
+                            </span>
+                            <label>
+                                <!--  URL Redirection -->
+                                <button type="button" @click="logout">Logout</button>
+                            </label>
+                        </div>
+                    </div>
                 </template>
             </side-menu>
           </div>
@@ -27,8 +39,14 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex';
 export default {
-
+    middleware: "auth",
+    methods:{
+      ...mapActions({
+        logout: "auth/firebaseLogout"
+      })
+    },
 }
 </script>
 
